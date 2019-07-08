@@ -34,9 +34,9 @@ install_maven(){
             echo 'xxxxxx'
             ls -la /c/ProgramData/chocolatey/lib/maven
             export M2_HOME=/c/ProgramData/chocolatey/lib/maven
-            echo $M2_HOME
+            echo ${M2_HOME}
             echo 'yyyyy'
-            export PATH="$M2_HOME/bin:$PATH"
+            export PATH="${M2_HOME}/bin:$PATH"
             echo "export PATH=\"${PATH}\"" >> ~/.env
             echo $PATH
             mvn
