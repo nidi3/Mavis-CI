@@ -29,6 +29,7 @@ install_maven(){
             ;;
         "windows")
             choco install maven
+            Update-SessionEnvironment
             echo $M2_HOME
             echo 'xxxxxx'
             ls -la /c/ProgramData/chocolatey/lib/maven
