@@ -30,7 +30,6 @@ install_maven(){
         "windows")
             choco install maven
             Update-SessionEnvironment
-            cat /C/ProgramData/chocolatey/logs/chocolatey.log
             echo $M2_HOME
             echo 'xxxxxx'
             ls -la /c/ProgramData/chocolatey/lib/maven
@@ -38,6 +37,7 @@ install_maven(){
             export PATH="$M2_HOME/bin:$PATH"
             echo "export PATH=\"${PATH}\"" >> ~/.env
             echo $PATH
+            mvn
             ;;
         *)
             echo unrecognized OS $TRAVIS_OS_NAME
