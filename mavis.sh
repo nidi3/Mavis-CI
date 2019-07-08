@@ -42,10 +42,14 @@ install_maven(){
 }
 
 before_script(){
-  mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V "$@"
+    cat ~/.jdk_config
+    source ~/.jdk_config
+    mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V "$@"
 }
 
 script(){
+    cat ~/.jdk_config
+    source ~/.jdk_config
     mvn test -B "$@"
 }
 
