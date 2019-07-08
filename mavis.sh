@@ -31,7 +31,8 @@ install_maven(){
             choco install maven
             echo $M2_HOME
             echo 'xxxxxx'
-            env
+            ls -la /c/ProgramData/chocolatey/lib/maven
+            export M2_HOME=/c/ProgramData/chocolatey/lib/maven
             export PATH="$M2_HOME/bin:$PATH"
             echo "export PATH=\"${PATH}\"" >> ~/.env
             echo $PATH
