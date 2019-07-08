@@ -5,10 +5,13 @@ install_jdk(){
     echo "running ${TRAVIS_OS_NAME}-specific configuration"
     export JAVA_HOME="$HOME/.jabba/jdk/$JDK"
     _pre_jdk
+    echo $PATH
     export PATH="$JAVA_HOME/bin:$PATH"
+    echo $PATH
     # Apparently exported variables are ignored in subsequent phases on Windows. Write in config file
     echo "export JAVA_HOME=\"${JAVA_HOME}\"" >> ~/.jdk_config
     echo "export PATH=\"${PATH}\"" >> ~/.jdk_config
+    echo $PATH
     _jabba_jdk
     which java
     java -Xmx32m -version
@@ -28,7 +31,8 @@ install_maven(){
             echo $PATH
             choco install maven
             echo $M2_HOME
-            echo "export PATH=\"${M2_HOME}\"" >> ~/.jdk_config
+            echo "export PATH=\"${M2_HOME/bin}\"" >> ~/.jdk_config
+            echo $PATH
             ;;
         *)
             echo unrecognized OS $TRAVIS_OS_NAME
