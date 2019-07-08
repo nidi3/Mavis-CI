@@ -31,7 +31,8 @@ install_maven(){
             echo $PATH
             choco install maven
             echo $M2_HOME
-            echo "export PATH=\"${M2_HOME/bin}\"" >> ~/.jdk_config
+            export PATH="$M2_HOME/bin:$PATH"
+            echo "export PATH=\"${PATH}\"" >> ~/.jdk_config
             echo $PATH
             ;;
         *)
