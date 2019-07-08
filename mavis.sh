@@ -9,8 +9,8 @@ install_jdk(){
     export PATH="$JAVA_HOME/bin:$PATH"
     echo $PATH
     # Apparently exported variables are ignored in subsequent phases on Windows. Write in config file
-    echo "export JAVA_HOME=\"${JAVA_HOME}\"" >> ~/.jdk_config
-    echo "export PATH=\"${PATH}\"" >> ~/.jdk_config
+    echo "export JAVA_HOME=\"${JAVA_HOME}\"" >> ~/.env
+    echo "export PATH=\"${PATH}\"" >> ~/.env
     echo $PATH
     _jabba_jdk
     which java
@@ -32,7 +32,7 @@ install_maven(){
             choco install maven
             echo $M2_HOME
             export PATH="$M2_HOME/bin:$PATH"
-            echo "export PATH=\"${PATH}\"" >> ~/.jdk_config
+            echo "export PATH=\"${PATH}\"" >> ~/.env
             echo $PATH
             ;;
         *)
@@ -42,14 +42,14 @@ install_maven(){
 }
 
 before_script(){
-    cat ~/.jdk_config
-    source ~/.jdk_config
+    cat ~/.env
+    source ~/.env
     mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V "$@"
 }
 
 script(){
-    cat ~/.jdk_config
-    source ~/.jdk_config
+    cat ~/.env
+    source ~/.env
     mvn test -B "$@"
 }
 
