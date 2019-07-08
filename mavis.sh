@@ -27,7 +27,8 @@ install_maven(){
         "windows")
             echo $PATH
             choco install maven
-            echo $PATH
+            echo $M2_HOME
+            echo "export PATH=\"${M2_HOME}\"" >> ~/.jdk_config
             ;;
         *)
             echo unrecognized OS $TRAVIS_OS_NAME
