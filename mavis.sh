@@ -29,14 +29,9 @@ install_maven(){
             ;;
         "windows")
             choco install maven
-            echo 'xxxxxx'
             export M2_HOME=`ls -d /c/ProgramData/chocolatey/lib/maven/apache-maven-*/`
-            echo ${M2_HOME}
-            echo 'yyyyy'
-            export PATH="${M2_HOME}/bin:$PATH"
+            export PATH="${M2_HOME}bin:$PATH"
             echo "export PATH=\"${PATH}\"" >> ~/.env
-            echo $PATH
-            mvn
             ;;
         *)
             echo unrecognized OS $TRAVIS_OS_NAME
@@ -45,14 +40,10 @@ install_maven(){
 }
 
 before_script(){
-    cat ~/.env
-    source ~/.env
     mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V "$@"
 }
 
 script(){
-    cat ~/.env
-    source ~/.env
     mvn test -B "$@"
 }
 
