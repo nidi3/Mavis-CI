@@ -25,8 +25,9 @@ install_maven(){
             echo Maven is apparently pre-installed on Travis OSX image
             ;;
         "windows")
+            echo $PATH
             choco install maven
-            refreshenv
+            echo $PATH
             ;;
         *)
             echo unrecognized OS $TRAVIS_OS_NAME
