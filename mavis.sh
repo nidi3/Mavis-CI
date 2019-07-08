@@ -28,9 +28,10 @@ install_maven(){
             echo Maven is apparently pre-installed on Travis OSX image
             ;;
         "windows")
-            echo $PATH
             choco install maven
             echo $M2_HOME
+            echo 'xxxxxx'
+            env
             export PATH="$M2_HOME/bin:$PATH"
             echo "export PATH=\"${PATH}\"" >> ~/.env
             echo $PATH
