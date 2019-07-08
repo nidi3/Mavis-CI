@@ -35,6 +35,14 @@ install_maven(){
     esac
 }
 
+before_script(){
+  mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V "$@"
+}
+
+script(){
+    mvn test -B "$@"
+}
+
 _pre_jdk(){
     case $TRAVIS_OS_NAME in
         "linux")
