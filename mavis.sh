@@ -30,6 +30,7 @@ install_maven(){
         "windows")
             choco install maven
             Update-SessionEnvironment
+            cat /C/ProgramData/chocolatey/logs/chocolatey.log
             echo $M2_HOME
             echo 'xxxxxx'
             ls -la /c/ProgramData/chocolatey/lib/maven
