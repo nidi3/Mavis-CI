@@ -29,11 +29,8 @@ install_maven(){
             ;;
         "windows")
             choco install maven
-            Update-SessionEnvironment
-            echo $M2_HOME
             echo 'xxxxxx'
-            ls -la /c/ProgramData/chocolatey/lib/maven
-            export M2_HOME=/c/ProgramData/chocolatey/lib/maven
+            export M2_HOME=`ls -d /c/ProgramData/chocolatey/lib/maven/apache-maven-*/`
             echo ${M2_HOME}
             echo 'yyyyy'
             export PATH="${M2_HOME}/bin:$PATH"
