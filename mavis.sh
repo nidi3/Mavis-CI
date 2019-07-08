@@ -26,6 +26,7 @@ install_maven(){
             ;;
         "windows")
             choco install maven
+            refreshenv
             ;;
         *)
             echo unrecognized OS $TRAVIS_OS_NAME
