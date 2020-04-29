@@ -16,6 +16,7 @@ A base `.travis.yml` file looks like this:
     
     env:
       - JDK="adopt@1.8.212-04"
+      - MVN=3.6.3
     
     cache:
       directories:

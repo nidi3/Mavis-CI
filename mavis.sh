@@ -18,11 +18,14 @@ install_jdk(){
 install_maven(){
     case $TRAVIS_OS_NAME in
         "linux")
-            sudo apt-get -qq update
-            sudo apt-get install maven
+            wget https://downloads.apache.org/maven/maven-3/$MVN/binaries/apache-maven-$MVN-bin.tar.gz
+            tar -xf apache-maven-$MVN-bin.tar.gz -C $HOME/.m2
+            export PATH=$HOME/.m2/apache-maven-$MVN/bin:$PATH
             ;;
         "osx")
-            echo Maven is apparently pre-installed on Travis OSX image
+            wget https://downloads.apache.org/maven/maven-3/$MVN/binaries/apache-maven-$MVN-bin.tar.gz
+            tar -xf apache-maven-$MVN-bin.tar.gz -C $HOME/.m2
+            export PATH=$HOME/.m2/apache-maven-$MVN/bin:$PATH
             ;;
         "windows")
             choco install maven
