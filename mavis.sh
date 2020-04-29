@@ -21,6 +21,7 @@ install_maven() {
   case $TRAVIS_OS_NAME in
   "linux" | "osx")
     if [ ! -d "$TARGET" ]; then
+      mkdir "$TARGET"
       wget https://downloads.apache.org/maven/maven-3/$VERSION/binaries/apache-maven-$VERSION-bin.tar.gz
       tar -xf apache-maven-$VERSION-bin.tar.gz -C $TARGET
     fi
