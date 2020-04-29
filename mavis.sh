@@ -17,7 +17,7 @@ install_jdk() {
 
 install_maven() {
   VERSION=${1:-3.6.3}
-  TARGET=$HOME/.m2
+  TARGET=$HOME/.m2/dist
   case $TRAVIS_OS_NAME in
   "linux" | "osx")
     if [ ! -d "$TARGET" ]; then
