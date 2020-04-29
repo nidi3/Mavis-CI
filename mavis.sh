@@ -16,21 +16,15 @@ install_jdk() {
 }
 
 install_maven() {
+  VERSION=${1:-3.6.3}
   TARGET=$HOME/.m2
   case $TRAVIS_OS_NAME in
-  "linux")
+  "linux" | "osx")
     if [ ! -d "$TARGET" ]; then
-      wget https://downloads.apache.org/maven/maven-3/$1/binaries/apache-maven-$1-bin.tar.gz
-      tar -xf apache-maven-$1-bin.tar.gz -C $TARGET
+      wget https://downloads.apache.org/maven/maven-3/$VERSION/binaries/apache-maven-$VERSION-bin.tar.gz
+      tar -xf apache-maven-$VERSION-bin.tar.gz -C $TARGET
     fi
-    export PATH=$TARGET/apache-maven-$1/bin:$PATH
-    ;;
-  "osx")
-    if [ ! -d "$TARGET" ]; then
-      wget https://downloads.apache.org/maven/maven-3/$1/binaries/apache-maven-$1-bin.tar.gz
-      tar -xf apache-maven-$1-bin.tar.gz -C $TARGET
-    fi
-    export PATH=$TARGET/apache-maven-$1/bin:$PATH
+    export PATH=$TARGET/apache-maven-$VERSION/bin:$PATH
     ;;
   "windows")
     choco install maven
