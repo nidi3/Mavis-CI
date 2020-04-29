@@ -16,7 +16,6 @@ A base `.travis.yml` file looks like this:
     
     env:
       - JDK="adopt@1.8.212-04"
-      - MVN=3.6.3
     
     cache:
       directories:
@@ -26,7 +25,7 @@ A base `.travis.yml` file looks like this:
       - curl "https://raw.githubusercontent.com/nidi3/Mavis-CI/master/mavis.sh" --output mavis.sh
       - source mavis.sh
       - install_jdk
-      - install_maven
+      - install_maven 3.6.3
     
     before_script:
       before_script
